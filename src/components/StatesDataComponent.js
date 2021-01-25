@@ -7,12 +7,13 @@ class StatesDataComponent extends React.Component {
         this.state = {
             error: null,
             isLoaded: false,
-            records: []
+            records: [],
+            stateName: this.props.value
         };
     }
 
     componentDidMount() {
-        fetch("https://api.data.gov.in/resource/3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69?api-key=579b464db66ec23bdd0000010ccfac0459084d696ac6bee8b8d1cd1b&format=json&offset=0&limit=all&filters[state]=West_Bengal")
+        fetch("https://api.data.gov.in/resource/3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69?api-key=579b464db66ec23bdd0000010ccfac0459084d696ac6bee8b8d1cd1b&format=json&offset=0&limit=all&filters[state]=" + this.state.stateName)
         .then(res => res.json())
         .then(
             (result) => {
@@ -38,13 +39,15 @@ class StatesDataComponent extends React.Component {
             return <div>Loading......</div>;
         } else  {
             return (
-                <ul>
-                    {records.map(record => (
-                        <li key={record.id}>
-                            {record.station}
-                        </li>
-                    ))}
-                </ul>
+                <div className="row">
+                    <ul>
+                        {records.map(record => (
+                            <li key={record.id}>
+                                {record.station}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             );
         }
     }
