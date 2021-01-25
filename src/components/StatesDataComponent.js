@@ -1,4 +1,3 @@
-import { error } from 'jquery';
 import React, { Component } from 'react';
 
 class StatesDataComponent extends React.Component {

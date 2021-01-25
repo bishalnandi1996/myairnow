@@ -1,12 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import States from '../states/States.json';
 import StatesDataComponent from './StatesDataComponent';
+import StatesCityComponent from './StatesCityComponent';
 
 class StatesComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            showStateDataComponent: false,
+            showStatesDataComponent: false,
+            showStatesCityComponent: false,
             singleState: null
         };
         this.showComponent = this.showComponent.bind(this);
@@ -14,20 +16,19 @@ class StatesComponent extends React.Component {
 
     showComponent(singleStateName) {
         this.setState({
-            showStateDataComponent: true,
+            showStatesDataComponent: true,
+            showStatesCityComponent: true,
             singleState: singleStateName.split(' ').join('_')
         });
+        document.getElementById("StateListButton").innerHTML = singleStateName;
     }
 
     render() {
-        function showState(x) {
-            alert(x);
-        }
         return (
             <div className="container">
                 <div className="row">
                     <div className="dropdown">
-                        <button type="button" className="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                        <button type="button" className="btn btn-primary dropdown-toggle" id="StateListButton" data-toggle="dropdown">
                             Select State
                         </button>
                         <div className="dropdown-menu">
@@ -38,7 +39,13 @@ class StatesComponent extends React.Component {
                     </div>
                 </div>
                 <div className="row">
-                    {this.state.showStateDataComponent ?
+                    {this.state.showStatesCityComponent ?
+                        <StatesCityComponent key={this.state.singleState} value={this.state.singleState} /> :
+                        null
+                    }
+                </div>
+                <div className="row">
+                    {this.state.showStatesDataComponent ?
                         <StatesDataComponent key={this.state.singleState} value={this.state.singleState} /> :
                         null
                     }
