@@ -40,13 +40,32 @@ class StatesDataComponent extends React.Component {
         } else  {
             return (
                 <div className="row">
-                    <ul>
-                        {records.map(record => (
-                            <li key={record.id}>
-                                {record.station}
-                            </li>
-                        ))}
-                    </ul>
+                    <table className="table">
+                        <thead className="thead-dark">
+                            <tr>
+                                <th>CITY</th>
+                                <th>STATION</th>
+                                <th>LAST UPDATED</th>
+                                <th>POLLUTANT</th>
+                                <th>MAX VALUE</th>
+                                <th>MIN VALUE</th>
+                                <th>AVG VALUE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {records.map(record => (
+                                <tr key={record.id}>
+                                    <td>{record.city}</td>
+                                    <td>{record.station}</td>
+                                    <td>{record.last_update}</td>
+                                    <td>{record.pollutant_id}</td>
+                                    <td>{record.pollutant_min}</td>
+                                    <td>{record.pollutant_max}</td>
+                                    <td>{record.pollutant_avg}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
             );
         }
