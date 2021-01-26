@@ -25,16 +25,16 @@ class StatesCityComponent extends React.Component {
         return(
             <div className="row">
                 <div className="row">
-                <div className="dropdown">
-                    <button type="button" className="btn btn-primary dropdown-toggle" id="StateListButton" data-toggle="dropdown">
-                        Select City
-                    </button>
-                    <div className="dropdown-menu">
-                        {Cities[this.props.value].map((City) => (
-                            <a className="dropdown-item" onClick={() => this.showComponent(City, this.props.value)} key={City}> {City} </a>
-                        ))}
+                    <div className="dropdown">
+                        <button type="button" className="btn btn-primary dropdown-toggle" id="StateListButton" data-toggle="dropdown">
+                            Select City
+                        </button>
+                        <div className="dropdown-menu">
+                            {Cities[this.props.value].map((City) => (
+                                <a className="dropdown-item" onClick={() => this.showComponent(City, this.props.value)} key={City}> {City} </a>
+                            ))}
+                        </div>
                     </div>
-                </div>
                 </div>
                 <div className="row">
                     {this.state.showCityDataComponent ?

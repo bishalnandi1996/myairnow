@@ -13,8 +13,6 @@ class CityDataComponent extends React.Component {
     }
 
     componentDidMount() {
-        // console.log(this.props.StateName);
-        // console.log(this.props.CityName);
         fetch("https://api.data.gov.in/resource/3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69?api-key=579b464db66ec23bdd0000010ccfac0459084d696ac6bee8b8d1cd1b&format=json&offset=0&limit=all&filters[state]=" + this.state.stateName + "&filters[city]=" + this.state.cityName)
         .then(res => res.json())
         .then(
@@ -32,12 +30,6 @@ class CityDataComponent extends React.Component {
             }
         )
     }
-
-    // render() {
-    //     return(
-    //         <div>BISHAL</div>
-    //     );
-    // }
 
     render() {
         const { error, isLoaded, records } = this.state;
