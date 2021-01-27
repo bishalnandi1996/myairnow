@@ -1,14 +1,12 @@
 import React from 'react';
 import States from '../states/States.json';
 import StatesDataComponent from './StatesDataComponent';
-import StatesCityComponent from './StatesCityComponent';
 
 class StatesComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             showStatesDataComponent: false,
-            showStatesCityComponent: false,
             singleState: null
         };
         this.showComponent = this.showComponent.bind(this);
@@ -17,7 +15,6 @@ class StatesComponent extends React.Component {
     showComponent(singleStateName) {
         this.setState({
             showStatesDataComponent: true,
-            showStatesCityComponent: true,
             singleState: singleStateName.split(' ').join('_')
         });
         document.getElementById("StateListButton").innerHTML = singleStateName;
@@ -27,22 +24,18 @@ class StatesComponent extends React.Component {
         return (
             <div className="container">
                 <div className="row">
-                    <div className="dropdown">
-                        <button type="button" className="btn btn-primary dropdown-toggle" id="StateListButton" data-toggle="dropdown">
-                            Select State
-                        </button>
-                        <div className="dropdown-menu">
-                            {States.map((singleState) => (
-                                <a className="dropdown-item" onClick={() => this.showComponent(singleState.name)} key={singleState.key}> {singleState.name} </a>
-                            ))}
+                    <div className="row">
+                        <div className="dropdown">
+                            <button type="button" className="btn btn-primary dropdown-toggle" id="StateListButton" data-toggle="dropdown">
+                                Select State
+                            </button>
+                            <div className="dropdown-menu" style={{maxHeight: "200px", overflowY: "auto"}}>
+                                {States.map((singleState) => (
+                                    <a className="dropdown-item" onClick={() => this.showComponent(singleState.name)} key={singleState.key}> {singleState.name} </a>
+                                ))}
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className="row">
-                    {this.state.showStatesCityComponent ?
-                        <StatesCityComponent key={this.state.singleState} value={this.state.singleState} /> :
-                        null
-                    }
                 </div>
                 <div className="row">
                     {this.state.showStatesDataComponent ?

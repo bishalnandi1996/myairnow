@@ -36,10 +36,12 @@ class CityDataComponent extends React.Component {
         if(error) {
             return <div>Error: {error.message}</div>
         } else if(!isLoaded) {
-            return <div>Loading......</div>;
+            return <div className="row">
+                    <div className="col-sm-12 text-success" style={{ fontWeight: "bold" }}>Loading......</div>
+                </div>;
         } else  {
             return (
-                <div className="row">
+                <div>
                     <table className="table">
                         <thead className="thead-dark">
                             <tr>

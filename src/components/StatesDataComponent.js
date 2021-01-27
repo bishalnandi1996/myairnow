@@ -1,4 +1,5 @@
 import React from 'react';
+import StatesCityComponent from './StatesCityComponent';
 
 class StatesDataComponent extends React.Component {
     constructor(props) {
@@ -35,36 +36,46 @@ class StatesDataComponent extends React.Component {
         if(error) {
             return <div>Error: {error.message}</div>
         } else if(!isLoaded) {
-            return <div>Loading......</div>;
+            return <div className="row">
+                    <div className="col-sm-12 text-success" style={{ fontWeight: "bold" }}>Loading......</div>
+                </div>;
         } else  {
             return (
-                <div className="row">
-                    <table className="table">
-                        <thead className="thead-dark">
-                            <tr>
-                                <th>CITY</th>
-                                <th>STATION</th>
-                                <th>LAST UPDATED</th>
-                                <th>POLLUTANT</th>
-                                <th>MAX VALUE</th>
-                                <th>MIN VALUE</th>
-                                <th>AVG VALUE</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {records.map(record => (
-                                <tr key={record.id}>
-                                    <td>{record.city}</td>
-                                    <td>{record.station}</td>
-                                    <td>{record.last_update}</td>
-                                    <td>{record.pollutant_id}</td>
-                                    <td>{record.pollutant_min}</td>
-                                    <td>{record.pollutant_max}</td>
-                                    <td>{record.pollutant_avg}</td>
+                <div>
+                    <div className="row">
+                        <div className="col-sm-12">
+                            <StatesCityComponent key={this.state.stateName} value={this.state.stateName} />
+                        </div>
+                    </div>
+                    <div className="row">
+                        <table className="table">
+                            <thead className="thead-dark">
+                                <tr>
+                                    <th>CITY</th>
+                                    <th>STATION</th>
+                                    <th>LAST UPDATED</th>
+                                    <th>POLLUTANT</th>
+                                    <th>MAX VALUE</th>
+                                    <th>MIN VALUE</th>
+                                    <th>AVG VALUE</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {records.map(record => (
+                                    <tr key={record.id}>
+                                        <td>{record.city}</td>
+                                        <td>{record.station}</td>
+                                        <td>{record.last_update}</td>
+                                        <td>{record.pollutant_id}</td>
+                                        <td>{record.pollutant_min}</td>
+                                        <td>{record.pollutant_max}</td>
+                                        <td>{record.pollutant_avg}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                    
                 </div>
             );
         }

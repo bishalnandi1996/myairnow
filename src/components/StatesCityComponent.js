@@ -23,13 +23,13 @@ class StatesCityComponent extends React.Component {
 
     render() {
         return(
-            <div className="row">
+            <div>
                 <div className="row">
                     <div className="dropdown">
                         <button type="button" className="btn btn-primary dropdown-toggle" id="StateListButton" data-toggle="dropdown">
                             Select City
                         </button>
-                        <div className="dropdown-menu">
+                        <div className="dropdown-menu" style={{maxHeight: "200px", overflowY: "auto"}}>
                             {Cities[this.props.value].map((City) => (
                                 <a className="dropdown-item" onClick={() => this.showComponent(City, this.props.value)} key={City}> {City} </a>
                             ))}
