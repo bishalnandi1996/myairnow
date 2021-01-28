@@ -47,6 +47,7 @@ class StatesDataComponent extends React.Component {
                             <StatesCityComponent key={this.state.stateName} value={this.state.stateName} />
                         </div>
                     </div>
+                    <p className="h2 text-center" style={{textTransform: "uppercase", fontWeight: "bold", textShadow: "-4px 2px 3px #a2a6a4"}}> {this.state.stateName.split('_').join(' ')} </p>
                     <div className="row">
                         <table className="table">
                             <thead className="thead-dark">

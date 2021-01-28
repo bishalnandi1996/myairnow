@@ -42,6 +42,7 @@ class CityDataComponent extends React.Component {
         } else  {
             return (
                 <div>
+                    <p className="h2 text-center" style={{textTransform: "uppercase", fontWeight: "bold", textShadow: "-4px 2px 3px #a2a6a4"}}> {this.state.cityName.split('_').join(' ')} </p>
                     <table className="table">
                         <thead className="thead-dark">
                             <tr>

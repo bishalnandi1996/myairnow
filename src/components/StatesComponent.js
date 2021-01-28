@@ -37,7 +37,7 @@ class StatesComponent extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className="row">
+                <div className="row" style={{ marginTop: "10px" }}>
                     {this.state.showStatesDataComponent ?
                         <StatesDataComponent key={this.state.singleState} value={this.state.singleState} /> :
                         null

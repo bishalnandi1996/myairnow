@@ -24,7 +24,7 @@ class StatesCityComponent extends React.Component {
     render() {
         return(
             <div>
-                <div className="row">
+                <div className="row" style={{ marginBottom: "10px" }}>
                     <div className="dropdown">
                         <button type="button" className="btn btn-primary dropdown-toggle" id="StateListButton" data-toggle="dropdown">
                             Select City
