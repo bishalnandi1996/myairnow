@@ -1,8 +1,6 @@
 # MyAirNow
 Check the air quality in your area
 
----
-
 Data provided by [**Open Government Data (OGD)**](https://data.gov.in/)
 
 ---
