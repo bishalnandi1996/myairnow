@@ -1,5 +1,7 @@
 import React from 'react';
 import StatesCityComponent from './StatesCityComponent';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearchLocation } from "@fortawesome/free-solid-svg-icons";
 
 class StatesDataComponent extends React.Component {
     constructor(props) {
@@ -8,8 +10,17 @@ class StatesDataComponent extends React.Component {
             error: null,
             isLoaded: false,
             records: [],
-            stateName: this.props.value
+            stateName: this.props.value,
+            showStatesData: true
         };
+
+        this.hideStateData = this.hideStateData.bind(this);
+    }
+
+    hideStateData() {
+        this.setState({
+            showStatesData: false
+        });
     }
 
     componentDidMount() {
@@ -39,43 +50,55 @@ class StatesDataComponent extends React.Component {
             return <div className="row">
                     <div className="col-sm-12 text-success" style={{ fontWeight: "bold" }}>Loading......</div>
                 </div>;
+        } else if(!this.state.records.length) {
+            return (
+                <div className="row">
+                    <p className="h2 text-center" style={{textTransform: "uppercase", fontWeight: "bold", textShadow: "-4px 2px 3px #a2a6a4"}}> <FontAwesomeIcon icon={faSearchLocation} /> {this.state.stateName.split('_').join(' ')} </p>
+                    <div className="col-sm-12 h4 text-danger">Sorry!! No data available at this moment</div>
+                </div>
+            );
         } else  {
             return (
                 <div>
                     <div className="row">
                         <div className="col-sm-12">
-                            <StatesCityComponent key={this.state.stateName} value={this.state.stateName} />
+                            <StatesCityComponent key={this.state.stateName} value={this.state.stateName} hideStateData={this.hideStateData} />
                         </div>
                     </div>
-                    <p className="h2 text-center" style={{textTransform: "uppercase", fontWeight: "bold", textShadow: "-4px 2px 3px #a2a6a4"}}> {this.state.stateName.split('_').join(' ')} </p>
-                    <div className="row">
-                        <table className="table">
-                            <thead className="thead-dark">
-                                <tr>
-                                    <th>CITY</th>
-                                    <th>STATION</th>
-                                    <th>LAST UPDATED</th>
-                                    <th>POLLUTANT</th>
-                                    <th>MAX VALUE</th>
-                                    <th>MIN VALUE</th>
-                                    <th>AVG VALUE</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {records.map(record => (
-                                    <tr key={record.id}>
-                                        <td>{record.city}</td>
-                                        <td>{record.station}</td>
-                                        <td>{record.last_update}</td>
-                                        <td>{record.pollutant_id}</td>
-                                        <td>{record.pollutant_min}</td>
-                                        <td>{record.pollutant_max}</td>
-                                        <td>{record.pollutant_avg}</td>
+                    {this.state.showStatesData ?
+                    <div>
+                        <p className="h2 text-center" style={{textTransform: "uppercase", fontWeight: "bold", textShadow: "-4px 2px 3px #a2a6a4"}}> <FontAwesomeIcon icon={faSearchLocation} /> {this.state.stateName.split('_').join(' ')} </p>
+                        <div className="row">
+                            <table className="table">
+                                <thead className="thead-dark">
+                                    <tr>
+                                        <th>CITY</th>
+                                        <th>STATION</th>
+                                        <th>LAST UPDATED</th>
+                                        <th>POLLUTANT</th>
+                                        <th>MAX VALUE</th>
+                                        <th>MIN VALUE</th>
+                                        <th>AVG VALUE</th>
                                     </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
+                                </thead>
+                                <tbody>
+                                    {records.map(record => (
+                                        <tr key={record.id}>
+                                            <td>{record.city}</td>
+                                            <td>{record.station}</td>
+                                            <td>{record.last_update}</td>
+                                            <td>{record.pollutant_id}</td>
+                                            <td>{record.pollutant_min}</td>
+                                            <td>{record.pollutant_max}</td>
+                                            <td>{record.pollutant_avg}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div> :
+                    null
+                    }
                     
                 </div>
             );

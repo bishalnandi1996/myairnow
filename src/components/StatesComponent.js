@@ -1,6 +1,8 @@
 import React from 'react';
 import States from '../states/States.json';
 import StatesDataComponent from './StatesDataComponent';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearchLocation } from "@fortawesome/free-solid-svg-icons";
 
 class StatesComponent extends React.Component {
     constructor(props) {
@@ -26,8 +28,8 @@ class StatesComponent extends React.Component {
                 <div className="row">
                     <div className="row">
                         <div className="dropdown">
-                            <button type="button" className="btn btn-primary dropdown-toggle" id="StateListButton" data-toggle="dropdown">
-                                Select State
+                            <button type="button" className="btn btn-info dropdown-toggle" id="StateListButton" data-toggle="dropdown">
+                            <FontAwesomeIcon icon={faSearchLocation} /> Select State
                             </button>
                             <div className="dropdown-menu" style={{maxHeight: "200px", overflowY: "auto"}}>
                                 {States.map((singleState) => (

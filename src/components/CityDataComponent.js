@@ -1,4 +1,7 @@
 import React from 'react';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearchLocation } from "@fortawesome/free-solid-svg-icons";
+import { faStreetView } from "@fortawesome/free-solid-svg-icons";
 
 class CityDataComponent extends React.Component {
     constructor(props) {
@@ -13,6 +16,7 @@ class CityDataComponent extends React.Component {
     }
 
     componentDidMount() {
+        this.props.hideStateData();
         fetch("https://api.data.gov.in/resource/3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69?api-key=579b464db66ec23bdd0000010ccfac0459084d696ac6bee8b8d1cd1b&format=json&offset=0&limit=all&filters[state]=" + this.state.stateName + "&filters[city]=" + this.state.cityName)
         .then(res => res.json())
         .then(
@@ -39,10 +43,21 @@ class CityDataComponent extends React.Component {
             return <div className="row">
                     <div className="col-sm-12 text-success" style={{ fontWeight: "bold" }}>Loading......</div>
                 </div>;
+        } else if(!this.state.records.length){
+            return (
+                <div className="row">
+                    <div className="h2 col-sm-5" style={{textTransform: "uppercase", fontWeight: "bold", textShadow: "-4px 2px 3px #a2a6a4"}}> <FontAwesomeIcon icon={faSearchLocation} /> {this.state.stateName.split('_').join(' ')} </div>
+                    <div className="h2 col-sm-5" style={{textTransform: "uppercase", fontWeight: "bold", textShadow: "-4px 2px 3px #a2a6a4"}}> <FontAwesomeIcon icon={faStreetView} /> {this.state.cityName.split('_').join(' ')} </div>
+                    <div className="col-sm-12 h4 text-danger">Sorry!! No data available at this moment</div>
+                </div>
+            );
         } else  {
             return (
                 <div>
-                    <p className="h2 text-center" style={{textTransform: "uppercase", fontWeight: "bold", textShadow: "-4px 2px 3px #a2a6a4"}}> {this.state.cityName.split('_').join(' ')} </p>
+                    <div className="row">
+                        <div className="h2 col-sm-5" style={{textTransform: "uppercase", fontWeight: "bold", textShadow: "-4px 2px 3px #a2a6a4"}}> <FontAwesomeIcon icon={faSearchLocation} /> {this.state.stateName.split('_').join(' ')} </div>
+                        <div className="h2 col-sm-5" style={{textTransform: "uppercase", fontWeight: "bold", textShadow: "-4px 2px 3px #a2a6a4"}}> <FontAwesomeIcon icon={faStreetView} /> {this.state.cityName.split('_').join(' ')} </div>
+                    </div>
                     <table className="table">
                         <thead className="thead-dark">
                             <tr>

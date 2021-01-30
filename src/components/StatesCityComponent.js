@@ -1,6 +1,8 @@
 import React from 'react';
 import CityDataComponent from './CityDataComponent';
 import Cities from '../states/StatesCity.json';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStreetView } from "@fortawesome/free-solid-svg-icons";
 
 class StatesCityComponent extends React.Component {
     constructor(props) {
@@ -8,7 +10,7 @@ class StatesCityComponent extends React.Component {
         this.state = {
             showCityDataComponent: false,
             singleState: null,
-            singleCity: null
+            singleCity: null,
         };
         this.showComponent = this.showComponent.bind(this);
     }
@@ -26,8 +28,8 @@ class StatesCityComponent extends React.Component {
             <div>
                 <div className="row" style={{ marginBottom: "10px" }}>
                     <div className="dropdown">
-                        <button type="button" className="btn btn-primary dropdown-toggle" id="StateListButton" data-toggle="dropdown">
-                            Select City
+                        <button type="button" className="btn btn-warning dropdown-toggle" id="StateListButton" data-toggle="dropdown">
+                            <FontAwesomeIcon icon={faStreetView} /> Select City
                         </button>
                         <div className="dropdown-menu" style={{maxHeight: "200px", overflowY: "auto"}}>
                             {Cities[this.props.value].map((City) => (
@@ -38,7 +40,7 @@ class StatesCityComponent extends React.Component {
                 </div>
                 <div className="row">
                     {this.state.showCityDataComponent ?
-                        <CityDataComponent key={this.state.singleCity} StateName={this.state.singleState} CityName={this.state.singleCity} /> :
+                        <CityDataComponent key={this.state.singleCity} StateName={this.state.singleState} CityName={this.state.singleCity} hideStateData={this.props.hideStateData} /> :
                         null
                     }
                 </div>
