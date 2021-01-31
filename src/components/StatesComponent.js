@@ -26,20 +26,18 @@ class StatesComponent extends React.Component {
         return (
             <div className="container">
                 <div className="row">
-                    <div className="row">
-                        <div className="dropdown">
-                            <button type="button" className="btn btn-info dropdown-toggle" id="StateListButton" data-toggle="dropdown">
-                            <FontAwesomeIcon icon={faSearchLocation} /> Select State
-                            </button>
-                            <div className="dropdown-menu" style={{maxHeight: "200px", overflowY: "auto"}}>
-                                {States.map((singleState) => (
-                                    <a className="dropdown-item" onClick={() => this.showComponent(singleState.name)} key={singleState.key}> {singleState.name} </a>
-                                ))}
-                            </div>
+                    <div className="dropdown">
+                        <button type="button" className="btn btn-info dropdown-toggle" id="StateListButton" data-toggle="dropdown">
+                        <FontAwesomeIcon icon={faSearchLocation} /> Select State
+                        </button>
+                        <div className="dropdown-menu" style={{maxHeight: "200px", overflowY: "auto"}}>
+                            {States.map((singleState) => (
+                                <a className="dropdown-item" onClick={() => this.showComponent(singleState.name)} key={singleState.key}> {singleState.name} </a>
+                            ))}
                         </div>
                     </div>
                 </div>
-                <div className="row" style={{ marginTop: "10px" }}>
+                <div style={{ marginTop: "10px" }}>
                     {this.state.showStatesDataComponent ?
                         <StatesDataComponent key={this.state.singleState} value={this.state.singleState} /> :
                         null

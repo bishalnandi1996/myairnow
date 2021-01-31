@@ -58,30 +58,32 @@ class CityDataComponent extends React.Component {
                         <div className="h2 col-sm-5" style={{textTransform: "uppercase", fontWeight: "bold", textShadow: "-4px 2px 3px #a2a6a4"}}> <FontAwesomeIcon icon={faSearchLocation} /> {this.state.stateName.split('_').join(' ')} </div>
                         <div className="h2 col-sm-5" style={{textTransform: "uppercase", fontWeight: "bold", textShadow: "-4px 2px 3px #a2a6a4"}}> <FontAwesomeIcon icon={faStreetView} /> {this.state.cityName.split('_').join(' ')} </div>
                     </div>
-                    <table className="table">
-                        <thead className="thead-dark">
-                            <tr>
-                                <th>STATION</th>
-                                <th>LAST UPDATED</th>
-                                <th>POLLUTANT</th>
-                                <th>MAX VALUE</th>
-                                <th>MIN VALUE</th>
-                                <th>AVG VALUE</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {records.map(record => (
-                                <tr key={record.id}>
-                                    <td>{record.station}</td>
-                                    <td>{record.last_update}</td>
-                                    <td>{record.pollutant_id}</td>
-                                    <td>{record.pollutant_min}</td>
-                                    <td>{record.pollutant_max}</td>
-                                    <td>{record.pollutant_avg}</td>
+                    <div className="table-responsive">
+                        <table className="table">
+                            <thead className="thead-dark">
+                                <tr>
+                                    <th>STATION</th>
+                                    <th>LAST UPDATED</th>
+                                    <th>POLLUTANT</th>
+                                    <th>MAX VALUE</th>
+                                    <th>MIN VALUE</th>
+                                    <th>AVG VALUE</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {records.map(record => (
+                                    <tr key={record.id}>
+                                        <td>{record.station}</td>
+                                        <td>{record.last_update}</td>
+                                        <td>{record.pollutant_id}</td>
+                                        <td>{record.pollutant_min}</td>
+                                        <td>{record.pollutant_max}</td>
+                                        <td>{record.pollutant_avg}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             );
         }

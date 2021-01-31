@@ -1,13 +1,16 @@
 import React from 'react';
 import StatesComponent from './components/StatesComponent';
-import { faHome } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import HeaderComponent from './components/HeaderComponent';
+import FooterComponent from './components/FooterComponent';
 
 class App extends React.Component {  
   render() {
     return(
+      <div>
+      <HeaderComponent />
       <StatesComponent />
-      //<FontAwesomeIcon icon={faHome} />
+      <FooterComponent />
+      </div>
     );
   }
 }

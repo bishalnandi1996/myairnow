@@ -60,15 +60,11 @@ class StatesDataComponent extends React.Component {
         } else  {
             return (
                 <div>
-                    <div className="row">
-                        <div className="col-sm-12">
-                            <StatesCityComponent key={this.state.stateName} value={this.state.stateName} hideStateData={this.hideStateData} />
-                        </div>
-                    </div>
+                    <StatesCityComponent key={this.state.stateName} value={this.state.stateName} hideStateData={this.hideStateData} />
                     {this.state.showStatesData ?
                     <div>
                         <p className="h2 text-center" style={{textTransform: "uppercase", fontWeight: "bold", textShadow: "-4px 2px 3px #a2a6a4"}}> <FontAwesomeIcon icon={faSearchLocation} /> {this.state.stateName.split('_').join(' ')} </p>
-                        <div className="row">
+                        <div className="table-responsive">
                             <table className="table">
                                 <thead className="thead-dark">
                                     <tr>
@@ -98,8 +94,7 @@ class StatesDataComponent extends React.Component {
                         </div>
                     </div> :
                     null
-                    }
-                    
+                    }    
                 </div>
             );
         }

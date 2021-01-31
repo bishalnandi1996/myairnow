@@ -38,7 +38,7 @@ class StatesCityComponent extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className="row">
+                <div>
                     {this.state.showCityDataComponent ?
                         <CityDataComponent key={this.state.singleCity} StateName={this.state.singleState} CityName={this.state.singleCity} hideStateData={this.props.hideStateData} /> :
                         null
